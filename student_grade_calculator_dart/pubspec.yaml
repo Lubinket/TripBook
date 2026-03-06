@@ -1,0 +1,23 @@
+name: grade_calculator
+description: A student grade calculator app
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  excel: ^2.0.0
+  file_picker: ^5.3.0
+  # path_provider is still needed for mobile/desktop file saving
+  path_provider: ^2.0.15
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
