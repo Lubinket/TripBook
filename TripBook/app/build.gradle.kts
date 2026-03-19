@@ -67,4 +67,15 @@ dependencies {
     // Firebase Storage
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-analytics")
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+    // Google Sign-In
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    // Location
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    // ViewModel + LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    // Activity KTX
+    implementation("androidx.activity:activity-ktx:1.9.3")
 }
