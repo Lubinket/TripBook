@@ -1,7 +1,8 @@
 <resources>
-    <style name="Theme.TripBook" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#1976D2</item>
-        <item name="colorPrimaryDark">#1565C0</item>
+    <style name="Theme.TripBook" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#1A2E4A</item>
+        <item name="colorPrimaryDark">#0f1d2e</item>
         <item name="colorAccent">#FF9800</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
     </style>
 </resources>
