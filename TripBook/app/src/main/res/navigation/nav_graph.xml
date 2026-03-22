@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <!-- ── HOME ──────────────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.tripbook.app.ui.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+
+        <!-- Home → Region (user taps a region card) -->
+        <action
+            android:id="@+id/action_home_to_region"
+            app:destination="@id/regionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- ── REGION ─────────────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/regionFragment"
+        android:name="com.tripbook.app.ui.region.RegionFragment"
+        android:label="Region"
+        tools:layout="@layout/fragment_region">
+
+        <!-- Receives the Region object passed from HomeFragment -->
+        <argument
+            android:name="region"
+            app:argType="com.tripbook.app.data.model.Region" />
+
+        <!-- Region → Site Detail (user taps a site card) -->
+        <action
+            android:id="@+id/action_region_to_siteDetail"
+            app:destination="@id/siteDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- ── SITE DETAIL ────────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/siteDetailFragment"
+        android:name="com.tripbook.app.ui.sitedetail.SiteDetailFragment"
+        android:label="Site Detail"
+        tools:layout="@layout/fragment_site_detail">
+
+        <!-- Receives the TouristSite object -->
+        <argument
+            android:name="site"
+            app:argType="com.tripbook.app.data.model.TouristSite" />
+
+        <!-- Site Detail → Booking -->
+        <action
+            android:id="@+id/action_siteDetail_to_booking"
+            app:destination="@id/bookingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <!-- Site Detail → Write Review -->
+        <action
+            android:id="@+id/action_siteDetail_to_writeReview"
+            app:destination="@id/writeReviewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- ── EXPLORE ────────────────────────────────────────────────── -->
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.tripbook.app.ui.explore.ExploreFragment"
+        android:label="Explore"
+        tools:layout="@layout/fragment_explore">
+
+        <!-- Explore → Site Detail -->
+        <action
+            android:id="@+id/action_explore_to_siteDetail"
+            app:destination="@id/siteDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- ── MY BOOKINGS ───────────────────────────────────────────── -->
+    <!--
+        NOTE: MyBookingsFragment is owned by your backend partner.
+        It is declared here so the nav graph is complete and MainActivity
+        can set up the bottom nav correctly. Do not implement it yourself.
+    -->
+    <fragment
+        android:id="@+id/myBookingsFragment"
+        android:name="com.tripbook.app.ui.mybookings.MyBookingsFragment"
+        android:label="Bookings"
+        tools:layout="@layout/fragment_my_bookings" />
+
+    <!-- ── BOOKING (owned by backend partner) ────────────────────── -->
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.tripbook.app.ui.booking.BookingFragment"
+        android:label="Book Trip"
+        tools:layout="@layout/fragment_booking">
+        <argument
+            android:name="site"
+            app:argType="com.tripbook.app.data.model.TouristSite" />
+    </fragment>
+
+    <!-- ── BOOKING CONFIRMATION (owned by backend partner) ────────── -->
+    <fragment
+        android:id="@+id/bookingConfirmationFragment"
+        android:name="com.tripbook.app.ui.booking.BookingConfirmationFragment"
+        android:label="Confirmation"
+        tools:layout="@layout/fragment_booking_confirmation" />
+
+    <!-- ── MY REVIEWS (owned by backend partner) ─────────────────── -->
+    <fragment
+        android:id="@+id/myReviewsFragment"
+        android:name="com.tripbook.app.ui.review.MyReviewsFragment"
+        android:label="Reviews"
+        tools:layout="@layout/fragment_my_reviews" />
+
+    <!-- ── WRITE REVIEW (owned by backend partner) ───────────────── -->
+    <fragment
+        android:id="@+id/writeReviewFragment"
+        android:name="com.tripbook.app.ui.review.WriteReviewFragment"
+        android:label="Write Review"
+        tools:layout="@layout/fragment_write_review">
+        <argument
+            android:name="siteId"
+            app:argType="string" />
+    </fragment>
+
+    <!-- ── PROFILE (owned by backend partner) ────────────────────── -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.tripbook.app.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>
