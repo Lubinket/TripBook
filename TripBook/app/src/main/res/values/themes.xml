@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!--
         Base app theme. Inherits from Material3 DayNight for automatic
         light/dark mode support.
@@ -16,12 +14,9 @@
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/on_surface</item>
         <item name="colorOutline">@color/outline</item>
-
         <!-- Status bar: match primary color -->
         <item name="android:statusBarColor">@color/primary</item>
         <item name="android:navigationBarColor">@color/surface</item>
-
-        <!-- Font: using system default (sans-serif). Add Poppins later via res/font/ if desired. -->
     </style>
 
     <!--
@@ -44,8 +39,7 @@
     </style>
 
     <!--
-        Text appearance overrides for Material components
-        (buttons, chips, labels use Poppins consistently).
+        Text appearance overrides for Material components.
     -->
     <style name="TextAppearance.TripBook.Button"
         parent="TextAppearance.Material3.LabelLarge">
