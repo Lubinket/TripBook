@@ -4,21 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Background image -->
     <ImageView
+        android:id="@+id/bgImage1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/auth_background"
+        android:src="@drawable/auth_bg1"
         android:scaleType="centerCrop"
         android:contentDescription="Cameroon landscape" />
 
-    <!-- Dark overlay -->
+    <ImageView
+        android:id="@+id/bgImage2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/auth_bg2"
+        android:scaleType="centerCrop"
+        android:alpha="0"
+        android:contentDescription="Cameroon landscape" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#99000000" />
 
-    <!-- Scrollable content so keyboard doesn't hide fields -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -31,7 +38,6 @@
             android:padding="32dp"
             android:paddingTop="60dp">
 
-            <!-- Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,7 +56,6 @@
                 android:textSize="14sp"
                 android:layout_marginBottom="40dp"/>
 
-            <!-- Name field -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,7 +71,6 @@
                     android:textColorHint="#AAFFFFFF"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Email field -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,7 +86,6 @@
                     android:textColorHint="#AAFFFFFF"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Password field -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,7 +102,6 @@
                     android:textColorHint="#AAFFFFFF"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Register button -->
             <Button
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
@@ -110,7 +112,6 @@
                 android:backgroundTint="#FF9800"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Divider -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,12 +121,13 @@
                 <View android:layout_width="0dp" android:layout_height="1dp"
                     android:layout_weight="1" android:background="#55FFFFFF"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="  or  " android:textColor="#AAFFFFFF" android:textSize="12sp"/>
+                    android:text="  or  "
+                    android:textColor="#AAFFFFFF"
+                    android:textSize="12sp"/>
                 <View android:layout_width="0dp" android:layout_height="1dp"
                     android:layout_weight="1" android:background="#55FFFFFF"/>
             </LinearLayout>
 
-            <!-- Google button -->
             <Button
                 android:id="@+id/btnGoogleRegister"
                 android:layout_width="match_parent"
@@ -135,7 +137,6 @@
                 android:backgroundTint="#FFFFFF"
                 android:layout_marginBottom="32dp"/>
 
-            <!-- Go to Login -->
             <TextView
                 android:id="@+id/tvGoToLogin"
                 android:layout_width="wrap_content"

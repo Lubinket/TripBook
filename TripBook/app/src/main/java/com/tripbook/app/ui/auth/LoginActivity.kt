@@ -1,10 +1,16 @@
 package com.tripbook.app.ui.auth
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.AnimatorListenerAdapter
+import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -14,6 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.material.textfield.TextInputEditText
 import com.tripbook.app.MainActivity
 import com.tripbook.app.R
 
@@ -23,13 +30,23 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 9001
 
-    // Views — wired by ID, no ViewBinding needed yet
-    private lateinit var etEmail: EditText
-    private lateinit var etPassword: EditText
+    private lateinit var etEmail: TextInputEditText
+    private lateinit var etPassword: TextInputEditText
     private lateinit var btnLogin: Button
     private lateinit var btnGoogle: Button
     private lateinit var tvGoToRegister: TextView
     private lateinit var progressBar: ProgressBar
+    private lateinit var bgImage1: ImageView
+    private lateinit var bgImage2: ImageView
+
+    private val backgrounds = listOf(
+        R.drawable.auth_bg1,
+        R.drawable.auth_bg2,
+        R.drawable.auth_bg3,
+        R.drawable.auth_bg4
+    )
+    private var currentBgIndex = 0
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,12 +58,18 @@ class LoginActivity : AppCompatActivity() {
         btnGoogle = findViewById(R.id.btnGoogleSignIn)
         tvGoToRegister = findViewById(R.id.tvGoToRegister)
         progressBar = findViewById(R.id.progressBar)
+        bgImage1 = findViewById(R.id.bgImage1)
+        bgImage2 = findViewById(R.id.bgImage2)
 
         setupGoogleSignIn()
         setupObservers()
+        startBackgroundSlideshow()
 
         btnLogin.setOnClickListener {
-            viewModel.login(etEmail.text.toString(), etPassword.text.toString())
+            viewModel.login(
+                etEmail.text.toString(),
+                etPassword.text.toString()
+            )
         }
 
         btnGoogle.setOnClickListener {
@@ -84,6 +107,35 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun startBackgroundSlideshow() {
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                val nextIndex = (currentBgIndex + 1) % backgrounds.size
+                bgImage2.setImageResource(backgrounds[nextIndex])
+
+                val fadeIn = ObjectAnimator.ofFloat(bgImage2, "alpha", 0f, 1f)
+                fadeIn.duration = 1500
+
+                val fadeOut = ObjectAnimator.ofFloat(bgImage1, "alpha", 1f, 0f)
+                fadeOut.duration = 1500
+
+                val set = AnimatorSet()
+                set.playTogether(fadeIn, fadeOut)
+                set.addListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        bgImage1.setImageResource(backgrounds[nextIndex])
+                        bgImage1.alpha = 1f
+                        bgImage2.alpha = 0f
+                        currentBgIndex = nextIndex
+                    }
+                })
+                set.start()
+
+                handler.postDelayed(this, 4000)
+            }
+        }, 4000)
+    }
+
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -96,5 +148,10 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Google Sign-In failed: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacksAndMessages(null)
     }
 }
