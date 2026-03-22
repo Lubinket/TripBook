@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    HomeFragment layout.
+    A NestedScrollView wraps everything so the header scrolls with the grid.
+    The RecyclerView uses a GridLayoutManager (2 columns) set in HomeFragment.kt.
+-->
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ── Header banner ────────────────────────────────────────────── -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_home_banner"
+                android:scaleType="centerCrop"
+                android:contentDescription="@null" />
+
+            <!-- Gradient scrim so text is readable over image -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_scrim_bottom" />
+
+            <!-- Greeting text over the banner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/text_greeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/greeting_placeholder"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_subtitle"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- ── Section label ─────────────────────────────────────────────── -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="12dp"
+            android:text="@string/explore_regions"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/on_background" />
+
+        <!-- ── Region grid ───────────────────────────────────────────────── -->
+        <!--
+            nestedScrollingEnabled="false" is REQUIRED here.
+            Without it, the RecyclerView captures scroll events and the
+            NestedScrollView cannot scroll properly.
+        -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_regions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="100dp"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

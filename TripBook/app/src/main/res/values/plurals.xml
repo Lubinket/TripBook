@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Used in ExploreFragment for the result count label.
+        Android handles "1 result" vs "5 results" automatically.
+    -->
+    <plurals name="result_count">
+        <item quantity="one">%d site found</item>
+        <item quantity="other">%d sites found</item>
+    </plurals>
+</resources>

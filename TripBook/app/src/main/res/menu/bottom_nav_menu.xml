@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    CRITICAL: The android:id of each item MUST exactly match the fragment ID
+    in nav_graph.xml. This is how setupWithNavController() knows which tab
+    to highlight and which fragment to show.
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_nav_home"
+        android:title="@string/nav_home" />
+
+    <item
+        android:id="@+id/exploreFragment"
+        android:icon="@drawable/ic_nav_explore"
+        android:title="@string/nav_explore" />
+
+    <item
+        android:id="@+id/myBookingsFragment"
+        android:icon="@drawable/ic_nav_bookings"
+        android:title="@string/nav_bookings" />
+
+    <item
+        android:id="@+id/myReviewsFragment"
+        android:icon="@drawable/ic_nav_reviews"
+        android:title="@string/nav_reviews" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_nav_profile"
+        android:title="@string/nav_profile" />
+
+</menu>

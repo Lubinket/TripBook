@@ -1,10 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    TripBook color palette.
+
+    Primary: deep navy blue (matches "Trip" in the logo wordmark)
+    Secondary: forest green (matches "Book" in the logo wordmark)
+    Accent: warm amber (for stars and highlights)
+    Backgrounds: off-white surface to avoid pure-white harshness
+-->
 <resources>
+
+    <!-- ── Brand colors ───────────────────────────────────────────────── -->
+    <color name="primary">#0D2B5E</color>           <!-- Deep navy blue -->
+    <color name="primary_variant">#1A3F7A</color>   <!-- Lighter navy for states -->
+    <color name="secondary">#1A6B3A</color>         <!-- Forest green -->
+    <color name="secondary_variant">#22894A</color>
+
+    <!-- ── Backgrounds ───────────────────────────────────────────────── -->
+    <color name="background">#F5F6FA</color>         <!-- Off-white app background -->
+    <color name="surface">#FFFFFF</color>            <!-- Cards, bottom nav, dialogs -->
+    <color name="surface_variant">#EEF0F5</color>   <!-- Chip backgrounds, dividers -->
+
+    <!-- ── Text on backgrounds ───────────────────────────────────────── -->
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="on_background">#1A1C22</color>         <!-- Main body text -->
+    <color name="on_background_secondary">#6B7280</color> <!-- Secondary/hint text -->
+    <color name="on_surface">#1A1C22</color>
+    <color name="on_surface_variant">#6B7280</color>
+
+    <!-- ── UI elements ────────────────────────────────────────────────── -->
+    <color name="outline">#D1D5DB</color>           <!-- Input field borders -->
+    <color name="ripple_color">#1A0D2B5E</color>   <!-- Primary ripple at 10% opacity -->
+    <color name="star_color">#F59E0B</color>        <!-- Amber for star ratings -->
+    <color name="white">#FFFFFF</color>
+
+    <!-- ── Bottom nav selector colors (referenced in selector drawables) -->
+    <color name="bottom_nav_active">#0D2B5E</color>
+    <color name="bottom_nav_inactive">#9CA3AF</color>
+
+    <!-- ── Chip selector colors ───────────────────────────────────────── -->
+    <color name="chip_bg_unselected">#EEF0F5</color>
+    <color name="chip_bg_selected">#0D2B5E</color>
+    <color name="chip_text_unselected">#6B7280</color>
+    <color name="chip_text_selected">#FFFFFF</color>
+
+    <!-- ── Status colors ─────────────────────────────────────────────── -->
+    <color name="status_upcoming">#10B981</color>   <!-- Green -->
+    <color name="status_pending">#F59E0B</color>    <!-- Amber -->
+    <color name="status_cancelled">#EF4444</color>  <!-- Red -->
+    <color name="status_past">#9CA3AF</color>       <!-- Grey -->
+
+    <!-- Legacy required by themes.xml -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
 </resources>
